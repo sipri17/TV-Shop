@@ -73,6 +73,7 @@ class Controller {
     static async createOrder(req, res, next) {
         try {
             const { ItemId, quantity } = req.body
+            console.log('received item id and quantity?>>>',req.body);
             if (!ItemId || !quantity) throw { name: "required", message: "ItemId and quantity is required" }
             if (isNaN(ItemId) || isNaN(quantity)) throw { name: "required", message: "ItemId and quantity have to be numbers" }
             const item = await Item.findByPk(ItemId)

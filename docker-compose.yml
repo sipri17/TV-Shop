@@ -1,0 +1,13 @@
+services:
+  server:
+    build: ./server
+    ports :
+      - "3000:3000"
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+  client:
+    build: ./client
+    ports:
+      - "5137:5137"
+
+ 
