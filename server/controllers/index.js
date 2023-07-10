@@ -42,16 +42,16 @@ class Controller {
             })
 
             const result = orders.map(data => {
-                return {
-                    nama: data.dataValues.User.nama,
-                    item_name: data.dataValues.Item?.dataValues.item_name
+                return {                    
+                    Item: data.dataValues.Item,
+                    quantity : data.dataValues.quantity
                 }
             })
 
-            console.log("orders:", orders[0].dataValues.Item.dataValues);
+            // console.log("orders:", orders[0].dataValues.Item.dataValues);
 
 
-            res.status(201).json(orders)
+            res.status(200).json(result)
         } catch (error) {
             next(error)
         }
@@ -64,7 +64,7 @@ class Controller {
             console.log('value',order.dataValues.User);
             if (!order || order.UserId != req.user.id) throw { name: "404data not found", message: "Order is not found" }
 
-            res.status(201).json(order)
+            res.status(200).json(order)
         } catch (error) {
             next(error)
         }
@@ -81,6 +81,17 @@ class Controller {
 
 
             res.status(201).json(orders)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async findAllItems(req, res, next) {
+        try {
+           const items = await Item.findAll()
+
+
+            res.status(201).json(items)
         } catch (error) {
             next(error)
         }

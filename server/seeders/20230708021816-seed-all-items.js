@@ -20,10 +20,10 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      item_name: "Sony Bravia S Series KDL32S5100",
+      item_name: "Sony KDL-50W800C",
       stock: 30,
       price: 2000000,
-      imageUrl: "https://th.bing.com/th/id/R.2b83b8e8194c80c10e24a170469b5254?rik=16qhySBlMslxiw&riu=http%3a%2f%2fwww.bhphotovideo.com%2fimages%2fimages2500x2500%2f604939.jpg&ehk=JCrtIn2n%2bX6%2fHz7VcoC%2bdDAEVlooIYyhNSQ5BfJFxNM%3d&risl=&pid=ImgRaw&r=0",
+      imageUrl: "https://th.bing.com/th/id/OIP.VjfNCM-FnMIqXWYyIgls8gHaFj?pid=ImgDet&rs=1",
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
