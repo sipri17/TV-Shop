@@ -37,7 +37,7 @@ class Controller {
                 },
                     Item],
                 where: {
-                    UserId: req.user.id 
+                    UserId: req.user.id
                 }
             })
 
@@ -61,7 +61,8 @@ class Controller {
         try {
             const { id } = req.params
             let order = await Order.findByPk(id)
-            if (!order) throw { name: "404data not found", message: "Order is not found" }
+            console.log('value',order.dataValues.User);
+            if (!order || order.UserId != req.user.id) throw { name: "404data not found", message: "Order is not found" }
 
             res.status(201).json(order)
         } catch (error) {
