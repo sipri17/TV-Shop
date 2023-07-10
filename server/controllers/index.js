@@ -1,6 +1,6 @@
 const { comparePassword, hashedPassword } = require('../helpers/bcrypt');
 const { generateToken } = require('../helpers/jwt');
-const { Order, Item } = require('../models')
+const { Order, Item, User } = require('../models')
 
 class Controller {
 
@@ -30,7 +30,25 @@ class Controller {
 
     static async findAllOrders(req, res, next) {
         try {
-            const orders = await Order.findAll()
+            const orders = await Order.findAll({
+                include: [{
+                    model: User,
+                    attributes: { exclude: ['password'] }
+                },
+                    Item],
+                where: {
+                    UserId: req.user.id 
+                }
+            })
+
+            const result = orders.map(data => {
+                return {
+                    nama: data.dataValues.User.nama,
+                    item_name: data.dataValues.Item?.dataValues.item_name
+                }
+            })
+
+            console.log("orders:", orders[0].dataValues.Item.dataValues);
 
 
             res.status(201).json(orders)
